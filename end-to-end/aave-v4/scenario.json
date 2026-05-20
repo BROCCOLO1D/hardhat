@@ -3,24 +3,28 @@
   "description": "Aave v4 fork to Hardhat 3.",
   "tags": ["external-repo"],
   "repo": "anaPerezGhiglia/aave-v4",
-  "commit": "f729aeff7cc61d576e8f89e818e05265ec9f65e9",
+  "commit": "e141a050313f9e2ed30aa90cdb23fd300e65a1b6",
   "packageManager": "yarn",
   "submodules": true,
+  "env": {
+    "PATH": "${localEnv:HOME}/.foundry/bin:${localEnv:PATH}"
+  },
+  "preinstall": "./preinstall-foundry.sh",
   "defaultCommand": "npx hardhat test solidity",
   "benchmark": {
     "commands": {
-      "cold compile": {
+      "forge build (cold)": {
         "runs": 3,
-        "prepare": "npx hardhat clean",
-        "command": "npx hardhat compile"
+        "prepare": "forge clean",
+        "command": "forge build"
       },
-      "warm compile": {
+      "forge build (warm)": {
         "runs": 39,
-        "command": "npx hardhat compile"
+        "command": "forge build"
       },
-      "test solidity": {
+      "forge test": {
         "runs": 3,
-        "command": "npx hardhat test solidity --no-compile"
+        "command": "forge test"
       }
     }
   }
