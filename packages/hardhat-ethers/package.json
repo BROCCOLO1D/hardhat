@@ -1,6 +1,6 @@
 {
   "name": "@nomicfoundation/hardhat-ethers",
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "Hardhat plugin for ethers",
   "homepage": "https://github.com/NomicFoundation/hardhat/tree/main/packages/hardhat-ethers",
   "repository": {
@@ -54,7 +54,7 @@
     "rimraf": "^5.0.5",
     "tsx": "^4.19.3",
     "typescript": "~6.0.3",
-    "hardhat": "workspace:^3.4.0"
+    "hardhat": "workspace:^3.8.0"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-errors": "workspace:^3.0.13",
@@ -63,6 +63,6 @@
     "ethers": "^6.14.0"
   },
   "peerDependencies": {
-    "hardhat": "workspace:^3.4.0"
+    "hardhat": "workspace:^3.8.0"
   }
 }

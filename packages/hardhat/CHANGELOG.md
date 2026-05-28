@@ -1,5 +1,39 @@
 # hardhat
 
+## 3.8.0
+
+### Minor Changes
+
+- [#8339](https://github.com/NomicFoundation/hardhat/pull/8339) [`f21390f`](https://github.com/NomicFoundation/hardhat/commit/f21390fe78773d8ba514cd4a64954220437293e3) Thanks [@alcuadrado](https://github.com/alcuadrado)! - Added `definePlugin`, a new helper exported from `hardhat/plugins`. Plugin authors should wrap their plugin literal with it so the default export of their `index` module becomes:
+
+  ```ts
+  import type { HardhatPlugin } from "hardhat/types/plugins";
+
+  import { definePlugin } from "hardhat/plugins";
+
+  const hardhatPlugin: HardhatPlugin = definePlugin({
+    id: "my-plugin",
+    // ...
+  });
+
+  export default hardhatPlugin;
+  ```
+
+  `definePlugin` returns its argument unchanged and, as a side effect, registers the plugin's id in a process-wide registry of loaded plugins. Hardhat's CLI uses that registry to warn when a plugin is imported but missing from the user's `plugins` array.
+
+- [#8339](https://github.com/NomicFoundation/hardhat/pull/8339) [`19c6927`](https://github.com/NomicFoundation/hardhat/commit/19c6927372fb39c4c4f0afe37895c738abbde237) Thanks [@alcuadrado](https://github.com/alcuadrado)! - Hardhat now warns when a plugin is imported in your Hardhat config file but missing from the `plugins` array. The warning is printed to stderr after the runtime environment is created, listing the offending plugins and pointing the user at the fix.
+
+  If your Hardhat config file is written in TypeScript, for the warning to be reliable your project's `tsconfig.json` must enable `verbatimModuleSyntax: true`. Without it, TypeScript deletes unused default-value imports, so an unused plugin can't be detected.
+
+### Patch Changes
+
+- [#8336](https://github.com/NomicFoundation/hardhat/pull/8336) [`86bfe66`](https://github.com/NomicFoundation/hardhat/commit/86bfe66b9b73c52649be2207b00b315a3b758f25) Thanks [@Wodann](https://github.com/Wodann)! - - Fixed default gas limit of Solidity test runner when a custom transaction gas cap (EIP-7825) or block gas limit is specified
+
+  - Fixed process deadlock/hang when dropping a provider with interval mining and logging enabled
+  - Print more detailed error descriptions for EVM, invariant fuzz, and cheatcode errors
+
+- [#8339](https://github.com/NomicFoundation/hardhat/pull/8339) [`25cea9f`](https://github.com/NomicFoundation/hardhat/commit/25cea9f9789c56d3e43f1cc8f0f7a34adde89605) Thanks [@alcuadrado](https://github.com/alcuadrado)! - The sample projects initialized with `hardhat --init` now set `verbatimModuleSyntax: true` in their `tsconfig.json`. This ensures that plugin imports in `hardhat.config.ts` are actually evaluated at runtime, which is required for the new "imported but unused plugin" warning to work reliably.
+
 ## 3.7.0
 
 ### Minor Changes

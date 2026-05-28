@@ -1,6 +1,6 @@
 {
   "name": "@nomicfoundation/hardhat-foundry",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Hardhat plugin that provides compatibility with Foundry-based projects remappings.",
   "homepage": "https://github.com/NomicFoundation/hardhat/tree/main/packages/hardhat-foundry",
   "repository": {
@@ -50,7 +50,7 @@
     "@types/node": "^22.0.0",
     "c8": "^9.1.0",
     "eslint": "9.25.1",
-    "hardhat": "workspace:^3.1.10",
+    "hardhat": "workspace:^3.8.0",
     "prettier": "3.2.5",
     "rimraf": "^5.0.5",
     "tsx": "^4.19.3",
@@ -61,6 +61,6 @@
     "@nomicfoundation/hardhat-utils": "workspace:^4.1.2"
   },
   "peerDependencies": {
-    "hardhat": "workspace:^3.1.10"
+    "hardhat": "workspace:^3.8.0"
   }
 }
